@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+        <meta charset="UTF-8" />
+        <title>Lunch Picker</title>
+        <link rel="stylesheet" src="style.css" /> 
+    </head>
+    <body>
+          <h1>Lunch Picker 🍱</h1>
+
+  <div class="input-area">
+    <input type="text" id="lunch-input" placeholder="Enter a lunch item" />
+    <button id="add-start-btn">Add to Start</button>
+    <button id="add-end-btn">Add to End</button>
+  </div>
+
+  <div class="action-buttons">
+    <button id="remove-start-btn">Remove First</button>
+    <button id="remove-end-btn">Remove Last</button>
+    <button id="pick-random-btn">Pick Random Lunch</button>
+  </div>
+
+  <h2>Lunch Menu:</h2>
+  <p id="menu-display">The menu is empty.</p>
+
+  <h2>Selected Lunch:</h2>
+  <p id="random-lunch-display">None selected yet.</p>
+        <script src="script.js"></script>
+    </body>
+</html>

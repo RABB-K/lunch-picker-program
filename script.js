@@ -1,72 +1,70 @@
-function addLunchToEnd(lunches,theString){
-let newArray;
-newArray = lunches.push(theString);
+   // Array to hold lunch items
+    const lunches = [];
 
-console.log(`${theString} added to the end of the lunch menu.`);
+    // Cache DOM elements for convenience
+    const input = document.getElementById("lunch-input");
+    const menuDisplay = document.getElementById("menu-display");
+    const randomLunchDisplay = document.getElementById("random-lunch-display");
 
-return lunches ;
+    // Function to update the menu display on the page
+    function updateMenuDisplay() {
+      menuDisplay.textContent = lunches.length
+        ? lunches.join(", ")
+        : "The menu is empty.";
+    }
 
-}
+    // Add lunch to the start of the array
+    function addLunchToStart() {
+      const value = input.value.trim();
+      if (value) {
+        lunches.unshift(value);
+        input.value = "";
+        updateMenuDisplay();
+      }
+    }
 
-/*function that takes an array as the first argument and a string as the second argument and add the string to the start of the array */
+    // Add lunch to the end of the array
+    function addLunchToEnd() {
+      const value = input.value.trim();
+      if (value) {
+        lunches.push(value);
+        input.value = "";
+        updateMenuDisplay();
+      }
+    }
 
-function addLunchToStart(lunches, theString){
-  let newArray;
-  newArray = lunches.unshift(theString);
-  console.log(`${theString} added to the start of the lunch menu.`);
-  return lunches;
-}
+    // Remove the first lunch item
+    function removeFirstLunch() {
+      if (lunches.length > 0) {
+        lunches.shift();
+        updateMenuDisplay();
+      }
+    }
 
-function removeLastLunch(lunches){
+    // Remove the last lunch item
+    function removeLastLunch() {
+      if (lunches.length > 0) {
+        lunches.pop();
+        updateMenuDisplay();
+      }
+    }
 
-if(lunches.length !== 0 ){
-let remouvedLunch;
-remouvedLunch = lunches.pop();
-console.log(`${remouvedLunch} removed from the end of the lunch menu.`);
-}
-else if(lunches.length === 0){
-  console.log("No lunches to remove.");
-}
-return lunches;
-}
+    // Pick a random lunch from the array and display it
+    function pickRandomLunch() {
+      if (lunches.length > 0) {
+        const randomIndex = Math.floor(Math.random() * lunches.length);
+        randomLunchDisplay.textContent = lunches[randomIndex];
+      } else {
+        randomLunchDisplay.textContent = "No lunches available.";
+      }
+    }
 
-/*Remove the first element from the array by certain conditions */
+    // Attach event listeners to buttons after DOM loads
+    document.getElementById("add-start-btn").addEventListener("click", addLunchToStart);
+    document.getElementById("add-end-btn").addEventListener("click", addLunchToEnd);
+    document.getElementById("remove-start-btn").addEventListener("click", removeFirstLunch);
+    document.getElementById("remove-end-btn").addEventListener("click", removeLastLunch);
+    document.getElementById("pick-random-btn").addEventListener("click", pickRandomLunch);
 
-function removeFirstLunch(lunches){
-  
-  if(lunches.length !==0){
-    let removedLunch;
-    removedLunch = lunches.shift();
-    console.log(`${removedLunch} removed from the start of the lunch menu.`);
-  }
-  else if(lunches.length === 0){
-    console.log("No lunches to remove.");
-  }
-  return lunches;
-}
-
-
-function getRandomLunch(lunches){
-  
-  if(lunches.length !== 0){
-    let randomLunch;
-    randomLunch = Math.floor(Math.random()*(lunches.length));
-    console.log(`Randomly selected lunch: ${lunches[randomLunch]}`);
-  }
-  else if(lunches.length === 0){
-    console.log("No lunches available.");
-  }
-}
-
-
-function showLunchMenu(lunches){
-
-  if(lunches.length !== 0){
-    let showedMenu = lunches. join(", ");
-    console.log(`Menu items: ${showedMenu}`);
-  }
-  else if (lunches.length === 0){
-    console.log("The menu is empty.");
-  }
-  
-}
+    // Initialize display on page load
+    updateMenuDisplay();
