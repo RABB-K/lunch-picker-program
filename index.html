@@ -1,31 +1,50 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta charset="UTF-8" />
         <title>Lunch Picker</title>
         <link rel="stylesheet" src="style.css" /> 
     </head>
     <body>
-          <h1>Lunch Picker 🍱</h1>
+   <main>
+    <h1>🍱 Lunch Picker</h1>
 
-  <div class="input-area">
-    <input type="text" id="lunch-input" placeholder="Enter a lunch item" />
-    <button id="add-start-btn">Add to Start</button>
-    <button id="add-end-btn">Add to End</button>
-  </div>
+    <section id="menu-section" aria-label="Lunch menu">
+      <h2>Lunch Menu</h2>
+      <p id="menu-display" class="menu-display">Loading menu...</p>
+    </section>
 
-  <div class="action-buttons">
-    <button id="remove-start-btn">Remove First</button>
-    <button id="remove-end-btn">Remove Last</button>
-    <button id="pick-random-btn">Pick Random Lunch</button>
-  </div>
+    <section id="controls" aria-label="Controls for lunch menu">
+      <input
+        type="text"
+        id="lunch-input"
+        placeholder="Enter a lunch item"
+        aria-label="Lunch item input"
+      />
+      <div class="buttons-group">
+        <button id="add-start-btn" class="btn btn-primary" type="button">
+          Add to Start
+        </button>
+        <button id="add-end-btn" class="btn btn-primary" type="button">
+          Add to End
+        </button>
+        <button id="remove-start-btn" class="btn btn-secondary" type="button">
+          Remove First
+        </button>
+        <button id="remove-end-btn" class="btn btn-secondary" type="button">
+          Remove Last
+        </button>
+        <button id="random-btn" class="btn btn-accent" type="button">
+          Pick Random Lunch
+        </button>
+      </div>
+    </section>
 
-  <h2>Lunch Menu:</h2>
-  <p id="menu-display">The menu is empty.</p>
+    <p id="result-message" class="result-message" aria-live="polite"></p>
+  </main>
 
-  <h2>Selected Lunch:</h2>
-  <p id="random-lunch-display">None selected yet.</p>
-        <script src="script.js"></script>
+  <script src="script.js"></script>
+</body>
     </body>
 </html>
